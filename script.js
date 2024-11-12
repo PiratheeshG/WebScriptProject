@@ -28,7 +28,7 @@ function displayWorkouts() {
 
     workouts.forEach((workout, index) => {
         const row = workoutTable.insertRow();
-        row.innerHTML = 
+        row.innerHTML = `
             <td>${workout.date}</td>
             <td>${workout.type}</td>
             <td>${workout.duration}</td>
@@ -40,7 +40,7 @@ function displayWorkouts() {
                 <button onclick="editWorkout(${index})">Edit</button>
                 <button onclick="deleteWorkout(${index})">Delete</button>
             </td>
-        ;
+        `;
     });
 }
 

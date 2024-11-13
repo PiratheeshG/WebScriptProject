@@ -23,19 +23,41 @@ nav a:hover {
     color: red;
 }
 
-/* Header */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* Increased gap for more space between logo and text */
+    padding: 20px;
+}
+
+.logo {
+    max-width: 250px;
+    height: auto;
+    margin-right: 20px; /* Additional spacing between logo and text */
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 header h1 {
     color: red;
+    font-size: 3em;
+    margin: 0;
 }
 
 header p {
-    color: white
+    color: white;
+    font-size: 1.5em;
+    margin: 5px 0 15px 0;
 }
 
-/* Hero Button */
 #hero-button {
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 1.2em;
     color: white;
     background-color: red;
     border: none;
@@ -45,10 +67,9 @@ header p {
 }
 
 #hero-button:hover {
-    background-color: red;
+    background-color: darkred;
 }
 
-/* Log Form */
 #log-form {
     background-color: darkgray;
     padding: 20px;
@@ -65,7 +86,9 @@ header p {
     color: white;
 }
 
-#log-form input, #log-form select, #log-form button {
+#log-form input,
+#log-form select,
+#log-form button {
     width: 100%;
     padding: 10px;
     margin: 8px 0;
@@ -73,7 +96,8 @@ header p {
     border-radius: 4px;
 }
 
-#log-form input, #log-form select {
+#log-form input,
+#log-form select {
     background-color: grey;
     color: white;
 }
@@ -85,7 +109,7 @@ header p {
 }
 
 #log-form button:hover {
-    background-color: red;
+    background-color: darkred;
 }
 
 #workout-log {
@@ -99,7 +123,8 @@ table {
     background-color: darkgrey;
 }
 
-th, td {
+th,
+td {
     border: 1px solid lightgrey;
     padding: 8px;
     text-align: center;
@@ -127,5 +152,7 @@ table button {
 }
 
 table button:hover {
-    background-color: red;
+    background-color: darkred;
 }
+
+

@@ -1,13 +1,12 @@
 let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
-let editIndex = -1; // To track the index of the workout being edited
+let editIndex = -1; 
 
-// Show Log Form for Adding or Editing Workout
+
 function navigateToLog() {
     document.getElementById("log-form").style.display = "block";
-    document.getElementById("workout-log").style.display = "none"; // Hide workout log initially
+    document.getElementById("workout-log").style.display = "none"; 
 }
 
-// Add or Edit Workout
 function addWorkout() {
     const workout = {
         date: document.getElementById("date").value,
@@ -83,5 +82,4 @@ function editWorkout(index) {
     navigateToLog();
 }
 
-// Display workouts on page load
 displayWorkouts();

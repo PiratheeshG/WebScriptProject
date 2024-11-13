@@ -37,8 +37,7 @@ function addWorkout() {
     localStorage.setItem("workouts", JSON.stringify(workouts));
     displayWorkouts();
     document.getElementById("cardio-log-form").reset();
-    document.getElementById("log-form").style.display = "none";
-    document.getElementById("workout-log").style.display = "block"; // Show the workout log section
+    document.getElementById("workout-log").style.display = "block";
 }
 
 function displayWorkouts() {

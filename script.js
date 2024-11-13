@@ -1,10 +1,16 @@
+<!------------------------ Retrieve Information --------------------------->
+
 let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
-let editIndex = -1;
+let editIndex = -1; 
+
+<!------------------------ Navigation and Display Form --------------------------->
 
 function navigateToLog() {
     document.getElementById("log-form").style.display = "block";
     document.getElementById("workout-log").style.display = "block";
 }
+
+<!------------------------ Add/Update Workout --------------------------->
 
 function addWorkout() {
     const workout = {
@@ -17,10 +23,14 @@ function addWorkout() {
         calories: document.getElementById("calories").value
     };
 
+    <!------------------------ Validate Required Fields --------------------------->
+
     if (!workout.date || !workout.type || !workout.duration) {
         alert("Please fill out the required fields (date, type, duration).");
         return;
     }
+
+    <!------------------------ Check if Adding or Editing --------------------------->
 
     if (editIndex === -1) {
         workouts.push(workout);
@@ -30,16 +40,21 @@ function addWorkout() {
         document.getElementById("add-button").textContent = "Log Workout";
     }
 
+    <!------------------------ Save/Display Updated Workouts --------------------------->
+
     localStorage.setItem("workouts", JSON.stringify(workouts));
     displayWorkouts();
     document.getElementById("cardio-log-form").reset();
-    document.getElementById("log-form").style.display = "block";
-    document.getElementById("workout-log").style.display = "block";
+    navigateToLog();
 }
+
+<!------------------------ Display Workouts --------------------------->
 
 function displayWorkouts() {
     const workoutTable = document.getElementById("workout-table").getElementsByTagName("tbody")[0];
-    workoutTable.innerHTML = "";
+    workoutTable.innerHTML = ""; 
+
+    <!------------------------ Create Rows --------------------------->
 
     workouts.forEach((workout, index) => {
         const row = workoutTable.insertRow();
@@ -59,11 +74,15 @@ function displayWorkouts() {
     });
 }
 
+<!------------------------ Delete Workout --------------------------->
+
 function deleteWorkout(index) {
     workouts.splice(index, 1);
     localStorage.setItem("workouts", JSON.stringify(workouts));
     displayWorkouts();
 }
+
+<!------------------------ Edit Workout --------------------------->
 
 function editWorkout(index) {
     const workout = workouts[index];
@@ -75,10 +94,11 @@ function editWorkout(index) {
     document.getElementById("avg-heart-rate").value = workout.avgHeartRate;
     document.getElementById("calories").value = workout.calories;
 
-    editIndex = index;
+    editIndex = index; 
     document.getElementById("add-button").textContent = "Save Changes";
     navigateToLog();
 }
 
 displayWorkouts();
+
 

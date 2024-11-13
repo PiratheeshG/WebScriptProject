@@ -1,11 +1,13 @@
 let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
 let editIndex = -1; // To track the index of the workout being edited
 
+// Show Log Form for Adding or Editing Workout
 function navigateToLog() {
-    document.getElementById("hero").style.display = "none";
     document.getElementById("log-form").style.display = "block";
+    document.getElementById("workout-log").style.display = "none"; // Hide workout log initially
 }
 
+// Add or Edit Workout
 function addWorkout() {
     const workout = {
         date: document.getElementById("date").value,
@@ -17,12 +19,26 @@ function addWorkout() {
         calories: document.getElementById("calories").value
     };
 
+    // Check required fields
+    if (!workout.date || !workout.type || !workout.duration) {
+        alert("Please fill out the required fields (date, type, duration).");
+        return;
+    }
+
+    // Add or update workout based on edit index
     if (editIndex === -1) {
-        // Adding a new workout
         workouts.push(workout);
-    localStorage.setItem("workouts", JSON.stringify(workouts)); 
+    } else {
+        workouts[editIndex] = workout;
+        editIndex = -1;
+        document.getElementById("add-button").textContent = "Log Workout";
+    }
+
+    localStorage.setItem("workouts", JSON.stringify(workouts));
     displayWorkouts();
-    document.getElementById("cardio-log-form").reset(); 
+    document.getElementById("cardio-log-form").reset();
+    document.getElementById("log-form").style.display = "none";
+    document.getElementById("workout-log").style.display = "block"; // Show the workout log section
 }
 
 function displayWorkouts() {
@@ -35,10 +51,10 @@ function displayWorkouts() {
             <td>${workout.date}</td>
             <td>${workout.type}</td>
             <td>${workout.duration}</td>
-            <td>${workout.distance}</td>
-            <td>${workout.avgSpeed}</td>
-            <td>${workout.avgHeartRate}</td>
-            <td>${workout.calories}</td>
+            <td>${workout.distance || "-"}</td>
+            <td>${workout.avgSpeed || "-"}</td>
+            <td>${workout.avgHeartRate || "-"}</td>
+            <td>${workout.calories || "-"}</td>
             <td>
                 <button onclick="editWorkout(${index})">Edit</button>
                 <button onclick="deleteWorkout(${index})">Delete</button>
@@ -63,9 +79,10 @@ function editWorkout(index) {
     document.getElementById("avg-heart-rate").value = workout.avgHeartRate;
     document.getElementById("calories").value = workout.calories;
 
-    editIndex = index; 
-    document.getElementById("add-button").textContent = "Save Changes"; 
-    navigateToLog(); 
+    editIndex = index;
+    document.getElementById("add-button").textContent = "Save Changes";
+    navigateToLog();
 }
 
+// Display workouts on page load
 displayWorkouts();

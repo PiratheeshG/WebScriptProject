@@ -3,81 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeatMiles</title>
+    <title>Cardio Tracker - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="workout_log.html">Workout Log</a>
+    </nav>
+
+    <!-- Landing Page Content -->
     <header>
-        <img src="logo.png" alt="Team Logo" class="logo">
-        <h1>BeatMiles</h1>
-        <p>Your Cardio Tracker for Better Performance</p>
+        <h1>Cardio Tracker</h1>
+        <p>Track your cardio workouts and monitor your progress</p>
     </header>
 
     <section id="hero">
-        <h2>Welcome to BeatMile</h2>
-        <p>Track your cardio workouts, monitor your progress, and beat your best mile!</p>
-        <button id="hero-button" onclick="navigateToLog()">Log New Workout</button>
+        <button id="hero-button" onclick="window.location.href='workout_log.html'">Log New Workout</button>
     </section>
-
-    <section id="log-form" style="display:none;">
-        <h2>Log a New Cardio Workout</h2>
-        <form id="cardio-log-form">
-            <label for="date">Date:</label>
-            <input type="date" id="date" required>
-
-            <label for="type">Type:</label>
-            <select id="type" required>
-                <option value="Running">Running</option>
-                <option value="Cycling">Cycling</option>
-                <option value="Swimming">Swimming</option>
-                <option value="Walking">Walking</option>
-                <option value="Other">Other</option>
-            </select>
-
-            <label for="duration">Duration (min):</label>
-            <input type="number" id="duration" placeholder="e.g., 30" required>
-
-            <label for="distance">Distance (km):</label>
-            <input type="number" id="distance" placeholder="e.g., 5">
-
-            <label for="avg-speed">Avg Speed (km/h):</label>
-            <input type="number" id="avg-speed" placeholder="Optional">
-
-            <label for="avg-heart-rate">Avg Heart Rate (bpm):</label>
-            <input type="number" id="avg-heart-rate" placeholder="Optional">
-
-            <label for="calories">Calories Burned:</label>
-            <input type="number" id="calories" placeholder="Optional">
-
-            <button type="button" onclick="addWorkout()">Log Workout</button>
-        </form>
-    </section>
-    
-    <section id="workout-log">
-        <h2>Workout Log</h2>
-        <table id="workout-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Duration (min)</th>
-                    <th>Distance (km)</th>
-                    <th>Avg Speed (km/h)</th>
-                    <th>Avg Heart Rate (bpm)</th>
-                    <th>Calories Burned</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
-    </section>
-    
-    <script src="script.js"></script>
-
-
 </body>
-
 </html>

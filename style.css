@@ -1,3 +1,5 @@
+/* Style Sheet */
+
 body {
     background-color: black;
     color: white;
@@ -23,19 +25,21 @@ nav a:hover {
     color: red;
 }
 
+
 .header-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px; /* Increased gap for more space between logo and text */
+    gap: 40px; 
     padding: 20px;
 }
 
 .logo {
     max-width: 250px;
     height: auto;
-    margin-right: 20px; /* Additional spacing between logo and text */
+    margin-right: 20px; 
 }
+
 
 .header-content {
     display: flex;
@@ -43,17 +47,20 @@ nav a:hover {
     align-items: flex-start;
 }
 
+
 header h1 {
     color: red;
     font-size: 3em;
     margin: 0;
 }
 
+
 header p {
     color: white;
     font-size: 1.5em;
     margin: 5px 0 15px 0;
 }
+
 
 #hero-button {
     padding: 15px 30px;
@@ -70,6 +77,7 @@ header p {
     background-color: darkred;
 }
 
+
 #log-form {
     background-color: darkgray;
     padding: 20px;
@@ -78,9 +86,11 @@ header p {
     color: white;
 }
 
+
 #log-form h2 {
     color: red;
 }
+
 
 #log-form label {
     color: white;
@@ -96,11 +106,13 @@ header p {
     border-radius: 4px;
 }
 
+
 #log-form input,
 #log-form select {
     background-color: grey;
     color: white;
 }
+
 
 #log-form button {
     background-color: red;
@@ -112,9 +124,11 @@ header p {
     background-color: darkred;
 }
 
+
 #workout-log {
     margin: 20px;
 }
+
 
 table {
     width: 100%;
@@ -122,6 +136,7 @@ table {
     margin-top: 10px;
     background-color: darkgrey;
 }
+
 
 th,
 td {
@@ -131,15 +146,18 @@ td {
     color: white;
 }
 
+
 th {
     background-color: lightgrey;
     color: red;
     font-weight: bold;
 }
 
+
 td {
     background-color: grey;
 }
+
 
 table button {
     background-color: red;
@@ -154,5 +172,3 @@ table button {
 table button:hover {
     background-color: darkred;
 }
-
-

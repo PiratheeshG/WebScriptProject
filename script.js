@@ -1,4 +1,5 @@
 let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
+let editIndex = -1; // To track the index of the workout being edited
 
 function navigateToLog() {
     document.getElementById("hero").style.display = "none";
@@ -16,7 +17,9 @@ function addWorkout() {
         calories: document.getElementById("calories").value
     };
 
-    workouts.push(workout);
+    if (editIndex === -1) {
+        // Adding a new workout
+        workouts.push(workout);
     localStorage.setItem("workouts", JSON.stringify(workouts)); 
     displayWorkouts();
     document.getElementById("cardio-log-form").reset(); 
@@ -44,17 +47,25 @@ function displayWorkouts() {
     });
 }
 
-
 function deleteWorkout(index) {
     workouts.splice(index, 1);
     localStorage.setItem("workouts", JSON.stringify(workouts));
     displayWorkouts();
 }
 
-
 function editWorkout(index) {
-    alert("Edit feature coming soon!");
-}
+    const workout = workouts[index];
+    document.getElementById("date").value = workout.date;
+    document.getElementById("type").value = workout.type;
+    document.getElementById("duration").value = workout.duration;
+    document.getElementById("distance").value = workout.distance;
+    document.getElementById("avg-speed").value = workout.avgSpeed;
+    document.getElementById("avg-heart-rate").value = workout.avgHeartRate;
+    document.getElementById("calories").value = workout.calories;
 
+    editIndex = index; 
+    document.getElementById("add-button").textContent = "Save Changes"; 
+    navigateToLog(); 
+}
 
 displayWorkouts();

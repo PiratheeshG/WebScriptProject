@@ -5,7 +5,7 @@ body {
 }
 
 nav {
-    background-color: darkgray;
+    background-color: black;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -23,14 +23,16 @@ nav a:hover {
     color: red;
 }
 
+/* Header */
 header h1 {
     color: red;
 }
 
 header p {
-    color: gray;
+    color: white
 }
 
+/* Hero Button */
 #hero-button {
     padding: 15px 30px;
     font-size: 18px;
@@ -46,6 +48,7 @@ header p {
     background-color: red;
 }
 
+/* Log Form */
 #log-form {
     background-color: darkgray;
     padding: 20px;
@@ -71,7 +74,7 @@ header p {
 }
 
 #log-form input, #log-form select {
-    background-color: gray;
+    background-color: grey;
     color: white;
 }
 
@@ -93,18 +96,18 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    background-color: darkgray;
+    background-color: darkgrey;
 }
 
 th, td {
-    border: 1px solid darkgray;
+    border: 1px solid lightgrey;
     padding: 8px;
     text-align: center;
     color: white;
 }
 
 th {
-    background-color: darkgray;
+    background-color: lightgrey;
     color: red;
     font-weight: bold;
 }
@@ -126,4 +129,3 @@ table button {
 table button:hover {
     background-color: red;
 }
-

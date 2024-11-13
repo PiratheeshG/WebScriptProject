@@ -1,10 +1,9 @@
 let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
-let editIndex = -1; 
-
+let editIndex = -1;
 
 function navigateToLog() {
     document.getElementById("log-form").style.display = "block";
-    document.getElementById("workout-log").style.display = "none"; 
+    document.getElementById("workout-log").style.display = "block";
 }
 
 function addWorkout() {
@@ -18,13 +17,11 @@ function addWorkout() {
         calories: document.getElementById("calories").value
     };
 
-    // Check required fields
     if (!workout.date || !workout.type || !workout.duration) {
         alert("Please fill out the required fields (date, type, duration).");
         return;
     }
 
-    // Add or update workout based on edit index
     if (editIndex === -1) {
         workouts.push(workout);
     } else {
@@ -36,6 +33,7 @@ function addWorkout() {
     localStorage.setItem("workouts", JSON.stringify(workouts));
     displayWorkouts();
     document.getElementById("cardio-log-form").reset();
+    document.getElementById("log-form").style.display = "block";
     document.getElementById("workout-log").style.display = "block";
 }
 
@@ -83,3 +81,4 @@ function editWorkout(index) {
 }
 
 displayWorkouts();
+

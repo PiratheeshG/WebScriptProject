@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeatMiles</title>
+    <title>Workout Log - BeatMiles</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!------------------------ Navigation Bar --------------------------->
+<body onload="checkAndProtectPage()">
     <nav>
         <a href="index.html">Home</a>
         <a href="workout_log.html">Workout Log</a>
     </nav>
 
-    <!-------------------------- Logging Form --------------------------->
     <section id="log-form">
         <h2>Log a New Cardio Workout</h2>
         <form id="cardio-log-form">
@@ -48,7 +46,6 @@
         </form>
     </section>
 
-    <!-------------------------- Log Table -------------------------->
     <section id="workout-log">
         <h2>Workout Log</h2>
         <table id="workout-table">
@@ -65,11 +62,22 @@
                 </tr>
             </thead>
             <tbody>
-                
             </tbody>
         </table>
     </section>
 
+    <script>
+        function checkAndProtectPage() {
+            const loggedInUser = localStorage.getItem("loggedInUser");
+            if (!loggedInUser) {
+                alert("You must be logged in to access this page.");
+                window.location.href = "login.html";
+            } else {
+                checkAuth();
+            }
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
+

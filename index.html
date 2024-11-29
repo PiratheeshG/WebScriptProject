@@ -6,14 +6,15 @@
     <title>BeatMiles</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!--------------------------- Navigation Bar ----------------------------->
+<body onload="checkAuth()">
     <nav>
         <a href="index.html">Home</a>
         <a href="workout_log.html">Workout Log</a>
+        <a href="login.html" id="login-link">Login</a>
+        <a href="register.html" id="register-link">Register</a>
+        <a href="#" id="logout-link" style="display: none;" onclick="logout()">Logout</a>
     </nav>
 
-        <!--------------------------- Logo and Company Name ----------------------------->
     <header>
         <div class="header-container">
             <img src="logo.png" alt="Team Logo" class="logo">
@@ -25,5 +26,25 @@
         </div>
     </header> 
 
+    <script>
+        function checkAuth() {
+            const loggedInUser = localStorage.getItem("loggedInUser");
+            const loginLink = document.getElementById("login-link");
+            const registerLink = document.getElementById("register-link");
+            const logoutLink = document.getElementById("logout-link");
+
+            if (loggedInUser) {
+                loginLink.style.display = "none";
+                registerLink.style.display = "none";
+                logoutLink.style.display = "inline";
+            } else {
+                loginLink.style.display = "inline";
+                registerLink.style.display = "inline";
+                logoutLink.style.display = "none";
+            }
+        }
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+

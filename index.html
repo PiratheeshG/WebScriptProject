@@ -13,13 +13,13 @@
         <a href="login.html" id="login-link">Login</a>
         <a href="register.html" id="register-link">Register</a>
         <a href="#" id="logout-link" style="display: none;" onclick="logout()">Logout</a>
-    </nav>
-
+    </nav> 
+ 
     <header>
         <div class="header-container">
             <img src="logo.png" alt="Team Logo" class="logo">
             <div class="header-content">
-                <h1>BeatMiles</h1>
+                <h1>BeatMiles</h1> 
                 <p>Track your cardio workouts and monitor your progress</p>
                 <button id="hero-button" onclick="window.location.href='workout_log.html'">Log New Workout</button>
             </div>
@@ -35,7 +35,7 @@
 
             if (loggedInUser) {
                 loginLink.style.display = "none";
-                registerLink.style.display = "none";
+                registerLink.style.display = "none"; 
                 logoutLink.style.display = "inline";
             } else {
                 loginLink.style.display = "inline";

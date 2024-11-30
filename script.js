@@ -57,19 +57,19 @@ function checkAuth() {
 }
 
 checkAuth();
- 
+  
 // Original Workout Management Logic
- 
+  
 let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
 let editIndex = -1;
-
+ 
 function navigateToLog() {
     document.getElementById("log-form").style.display = "block";
     document.getElementById("workout-log").style.display = "block";
 }
 
 function addWorkout() {
-    const workout = {
+    const workout = { 
         date: document.getElementById("date").value,
         type: document.getElementById("type").value,
         duration: document.getElementById("duration").value,

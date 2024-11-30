@@ -57,9 +57,9 @@ function checkAuth() {
 }
 
 checkAuth();
-
+ 
 // Original Workout Management Logic
-
+ 
 let workouts = JSON.parse(localStorage.getItem("workouts")) || [];
 let editIndex = -1;
 

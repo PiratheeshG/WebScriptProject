@@ -6,7 +6,7 @@ function register() {
 
     if (!email || !password) {
         alert("Please fill out all fields.");
-        return;
+        return; 
     }
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -29,7 +29,7 @@ function login() {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(user => user.email === email && user.password === password);
 
-    if (!user) {
+    if (!user) { 
         alert("Invalid email or password.");
         return;
     }

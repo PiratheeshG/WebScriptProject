@@ -21,8 +21,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/workouts', workoutRoutes);
+app.use('/api/auth-route', authRoutes);
+app.use('/api/workout-route', workoutRoutes);
 
 // Handle SPA routing, serve index.html for all non-API routes
 app.get('*', (req, res) => {

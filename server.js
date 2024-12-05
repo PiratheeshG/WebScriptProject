@@ -1,9 +1,9 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+require('dotenv').config(); // You can keep this if other variables need it
 
 const authRoutes = require('./routes/auth-route');
 const workoutRoutes = require('./routes/workout-route');
@@ -27,15 +27,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Global error handler
-app.use((err, req, res, next) => {
-  console.error('Unhandled Error:', err);
-  res.status(500).send('Internal Server Error');
-});
+// Hardcoded MongoDB URI
+const mongoURI = 'mongodb+srv://beatmiles:beatmiles@beatmiles-cluster.pu19i.mongodb.net/?retryWrites=true&w=majority&appName=BeatMiles-Cluster';
 
 // MongoDB Connection
-const mongoURI = process.env.MONGODB_URI;
-
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB connected');
@@ -46,10 +41,17 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     process.exit(1); // Exit the application if the database connection fails
   });
 
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error('Unhandled Error:', err);
+  res.status(500).send('Internal Server Error');
+});
+
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason);
   // Optionally, you can close the server and exit the process
 });
+
 
 

@@ -33,14 +33,14 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px; 
+    gap: 40px;
     padding: 20px;
 }
 
 .logo {
     max-width: 250px;
     height: auto;
-    margin-right: 20px; 
+    margin-right: 20px;
 }
 
 .header-content {
@@ -168,4 +168,3 @@ table button {
 table button:hover {
     background-color: darkred;
 }
-

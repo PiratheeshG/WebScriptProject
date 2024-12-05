@@ -18,7 +18,7 @@ const authenticate = async (req, res, next) => {
         next();
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server error');
+        res.status(500).json({ msg: 'Server error' });
     }
 };
 
@@ -29,7 +29,7 @@ router.get('/', authenticate, async (req, res) => {
         res.json(workouts);
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server error');
+        res.status(500).json({ msg: 'Server error' });
     }
 });
 
@@ -51,7 +51,41 @@ router.post('/', authenticate, async (req, res) => {
         res.json(workout);
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server error');
+        res.status(500).json({ msg: 'Server error' });
+    }
+});
+
+// Update an existing workout
+router.put('/:id', authenticate, async (req, res) => {
+    const { date, type, duration, distance, avgSpeed, avgHeartRate, calories } = req.body;
+    const workoutFields = {};
+    if (date) workoutFields.date = date;
+    if (type) workoutFields.type = type;
+    if (duration) workoutFields.duration = duration;
+    if (distance) workoutFields.distance = distance;
+    if (avgSpeed) workoutFields.avgSpeed = avgSpeed;
+    if (avgHeartRate) workoutFields.avgHeartRate = avgHeartRate;
+    if (calories) workoutFields.calories = calories;
+
+    try {
+        let workout = await Workout.findById(req.params.id);
+        if (!workout) {
+            return res.status(404).json({ msg: 'Workout not found' });
+        }
+        if (workout.user.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ msg: 'Not authorized' });
+        }
+
+        workout = await Workout.findByIdAndUpdate(
+            req.params.id,
+            { $set: workoutFields },
+            { new: true }
+        );
+
+        res.json(workout);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ msg: 'Server error' });
     }
 });
 
@@ -69,7 +103,7 @@ router.delete('/:id', authenticate, async (req, res) => {
         res.json({ msg: 'Workout removed' });
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server error');
+        res.status(500).json({ msg: 'Server error' });
     }
 });
 

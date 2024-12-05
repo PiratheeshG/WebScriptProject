@@ -1,5 +1,3 @@
-// public/script.js
-
 // Base URL for API
 const API_BASE = '/api'; // Relative path since frontend and backend are on the same domain
 

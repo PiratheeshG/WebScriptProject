@@ -1,3 +1,5 @@
+// server.js
+
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -5,7 +7,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const authRoutes = require('./routes/auth-route');
+const authRoutes = require('./routes/auth');
 const workoutRoutes = require('./routes/workouts');
 
 const app = express();

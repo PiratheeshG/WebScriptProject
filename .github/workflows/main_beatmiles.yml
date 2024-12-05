@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -26,12 +26,15 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-      
+
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,17 +50,20 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_850370B885CD412789C59BB18A064E49 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D5B99C6B0DDA44439D2C3F025BA405CB }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C0C52AB77DD6443087518313EB57E0D7 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_86AB0F90B5824FCDB0CF54B48403E23A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B9D727111059443DB197E4CA27ABFC7C }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DCD50A1C273F48A592D2A4976E6BA9E7 }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'beatmiles'
           slot-name: 'Production'

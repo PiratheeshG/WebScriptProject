@@ -1,5 +1,5 @@
 // Base URL for API
-const API_BASE = '/api'; // Relative path since frontend and backend are on the same domain
+const API_BASE = '/api'; 
 
 // User Authentication Logic
 
@@ -45,7 +45,6 @@ async function login() {
 
         const data = await response.json();
         if (response.ok) {
-            // Store user info in localStorage
             localStorage.setItem("loggedInUser", JSON.stringify({ email: data.email, userId: data.userId }));
             alert(data.msg);
             window.location.href = "index.html";
@@ -143,7 +142,6 @@ async function addWorkout() {
 
     try {
         if (editIndex === -1) {
-            // Add new workout
             const response = await fetch(`${API_BASE}/workouts`, {
                 method: 'POST',
                 headers: {
@@ -164,7 +162,6 @@ async function addWorkout() {
                 alert(data.msg);
             }
         } else {
-            // Update existing workout
             const workoutId = workouts[editIndex]._id;
             const response = await fetch(`${API_BASE}/workouts/${workoutId}`, {
                 method: 'PUT',
@@ -288,7 +285,7 @@ function checkAndProtectPage() {
     }
 }
 
-// Call fetchWorkouts if on workout_log.html
+
 if (window.location.pathname.endsWith('workout_log.html')) {
     window.onload = checkAndProtectPage;
 }

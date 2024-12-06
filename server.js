@@ -10,8 +10,8 @@ const workoutRoutes = require('./routes/workout-route');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-// Middleware
+ 
+// Middleware 
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -27,7 +27,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Hardcoded MongoDB URI
+// Hardcoded MongoDB URI 
 const mongoURI = 'mongodb+srv://beatmiles:beatmiles@beatmiles-cluster.pu19i.mongodb.net/?retryWrites=true&w=majority&appName=BeatMiles-Cluster';
 
 // MongoDB Connection
@@ -38,7 +38,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   })
   .catch(err => {
     console.error('MongoDB connection error:', err);
-    process.exit(1); // Exit the application if the database connection fails
+    process.exit(1); 
   });
 
 // Global error handler
@@ -50,7 +50,7 @@ app.use((err, req, res, next) => {
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-  // Optionally, you can close the server and exit the process
+  
 });
 
 

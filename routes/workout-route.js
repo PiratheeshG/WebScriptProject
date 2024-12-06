@@ -3,7 +3,7 @@ const router = express.Router();
 const Workout = require('../models/workout');
 const User = require('../models/user');
 
-// Middleware to check authentication
+// ------------------------ Middleware to check authentication ------------------------
 const authenticate = async (req, res, next) => {
     const userId = req.header('x-user-id');
     if (!userId) {
@@ -22,7 +22,7 @@ const authenticate = async (req, res, next) => {
     }
 };
 
-// Get all workouts for a user
+//------------------------ Get all workouts for a user ------------------------
 router.get('/', authenticate, async (req, res) => {
     try {
         const workouts = await Workout.find({ user: req.user._id }).sort({ date: -1 });
@@ -33,7 +33,7 @@ router.get('/', authenticate, async (req, res) => {
     }
 });
 
-// Add a new workout
+//  ------------------------ Add a new workout ------------------------
 router.post('/', authenticate, async (req, res) => {
     const { date, type, duration, distance, avgSpeed, avgHeartRate, calories } = req.body;
     try {
@@ -55,7 +55,7 @@ router.post('/', authenticate, async (req, res) => {
     }
 });
 
-// Update an existing workout
+// ------------------------ Update an existing workout ------------------------
 router.put('/:id', authenticate, async (req, res) => {
     const { date, type, duration, distance, avgSpeed, avgHeartRate, calories } = req.body;
     const workoutFields = {};
@@ -89,7 +89,7 @@ router.put('/:id', authenticate, async (req, res) => {
     }
 });
 
-// Delete a workout
+// ------------------------ Delete a workout ------------------------
 router.delete('/:id', authenticate, async (req, res) => {
     try {
         let workout = await Workout.findById(req.params.id);

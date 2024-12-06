@@ -1,7 +1,7 @@
 // Base URL for API
 const API_BASE = '/api'; 
 
-// User Authentication Logic
+// ------------------------ User Authentication Logic ------------------------
 
 async function register() {
     const email = document.getElementById("register-email").value;
@@ -82,7 +82,7 @@ function checkAuth() {
 
 checkAuth();
 
-// Workout Management Logic
+// ------------------------ Workout Management Logic ------------------------
 
 let workouts = [];
 let editIndex = -1;
@@ -273,7 +273,7 @@ async function editWorkout(id) {
     navigateToLog();
 }
 
-// Fetch workouts when on workout_log.html
+// ------------------------ Fetch workouts when on workout_log.html ------------------------
 function checkAndProtectPage() {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     if (!loggedInUser) {
